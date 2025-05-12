@@ -121,7 +121,29 @@ Valor total: 3 + 5 + 2 = 10
 
 Peso total: 2 + 4 + 1 = 7 (não ultrapassando a capacidade da mochila)
 
-## 5. Conclusão
+## 5. Dificuldades e Aprendizados
+
+### Dificuldades:
+
+#### Complexidade Computacional: 
+
+À medida que o número de itens aumenta, a complexidade computacional dos algoritmos cresce significativamente, especialmente para o PSO e o Algoritmo Genético, que envolvem muitos cálculos e ajustes de parâmetros.
+
+#### Parâmetros dos Algoritmos: 
+Encontrar os valores ideais para os parâmetros de cada algoritmo (como taxas de mutação, coeficientes no PSO, etc.) foi um desafio. Ajustes inadequados podem levar a soluções subótimas ou tempos de execução muito elevados.
+
+### Aprendizados:
+
+#### Importância dos Parâmetros: 
+O ajuste de parâmetros (como taxas de mutação no Algoritmo Genético ou coeficientes no PSO) teve um grande impacto no desempenho de cada algoritmo. A calibração precisa é essencial para garantir bons resultados.
+
+#### Uso de Algoritmos Bio-Inspirados: 
+Observamos que os algoritmos bio-inspirados podem ser muito eficientes para resolver problemas de otimização, mas a escolha do algoritmo depende muito do tamanho da instância do problema.
+
+#### Experimentação e Ajustes: 
+O processo de experimentação e ajustes finos foi fundamental para alcançar os melhores resultados, e o uso de diferentes algoritmos ajudou a comparar os pontos fortes e fracos de cada abordagem.
+
+## 6. Conclusão
 Este estudo comparou o desempenho de diferentes algoritmos bio-inspirados na solução do Problema da Mochila. Observamos que, enquanto algoritmos como o Bee Algorithm e o Cuckoo Search apresentaram melhor desempenho em instâncias maiores, o PSO e o Algoritmo Genético foram mais eficientes para instâncias menores.
 
 Os resultados destacam a importância de escolher o algoritmo certo com base no tamanho e na natureza do problema, e o impacto que parâmetros mal ajustados podem ter na eficiência dos algoritmos. A experimentação foi essencial para encontrar a solução ótima.
