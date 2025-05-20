@@ -1,11 +1,9 @@
 # Relatório de Resultados: Algoritmos Bio-Inspirados
 
 ## Equipe:
-* Gabriel Kasten
-* Gustavo Costa
-* Gustavo Larsen
-* Lucas Mendes
-* Luis Felipe Mondini
+* Gabriel D. Kasten
+* Gustavo Henrique Costa
+* Lucas Mendes Israel
 
 ## 1. Introdução
 
