@@ -1,148 +1,112 @@
-# Relatório de Resultados: Algoritmos Bio-Inspirados
+# Refatoração do Problema da Mochila com Algoritmos Bio-inspirados
 
-## Equipe:
-* Gabriel D. Kasten
-* Gustavo Henrique Costa
-* Lucas Mendes Israel
+## Descrição do Projeto
 
-## 1. Introdução
+Este projeto consiste na implementação e refatoração de diversas soluções bio-inspiradas para o Problema da Mochila 0/1, utilizando algoritmos como Bee Algorithm, Algoritmo Genético, Particle Swarm Optimization (PSO), Cuckoo Search e Ant Colony Optimization (ACO).  
+O objetivo é fornecer uma estrutura modular, clara e reutilizável que permita executar, comparar e analisar o desempenho de cada algoritmo sobre diferentes instâncias do problema.
 
-Este relatório apresenta os resultados obtidos com a aplicação de algoritmos bio-inspirados na resolução do Problema da Mochila 0/1, um problema clássico de otimização combinatória. Os algoritmos analisados foram:
+---
 
-## 2. Descrição do Funcionamento dos Algoritmos
+## Estrutura do Projeto
 
-### Bee Algorithm:
-O Bee Algorithm é inspirado no comportamento de coleta das abelhas. As abelhas exploram a vizinhança de uma solução para encontrar o néctar mais eficiente. No contexto do Problema da Mochila, cada abelha tenta encontrar uma combinação de itens que maximiza o valor total sem ultrapassar a capacidade da mochila.
+poblema_da_mochila_refatorado/
+│
+├── refatorado/
+│ ├── bio/
+│ │ ├── algBeeAlgorithm.py # Implementação do Bee Algorithm
+│ │ ├── algGeneticos.py # Implementação do Algoritmo Genético
+│ │ ├── algEnxParticulas.py # Implementação do PSO
+│ │ ├── algCuckoo.py # Implementação do Cuckoo Search
+│ │ ├── algColonFormigas.py # Implementação do ACO
+│ │ ├── main.py # Script principal para executar e comparar os algoritmos
+│ │ └── tests/ # Testes unitários para cada algoritmo
+│ │ ├── test_algGeneticos.py
+│ │ ├── test_bee.py
+│ │ ├── test_cuckoo.py
+│ │ └── test_pso.py
+│
+└── README.md # Este arquivo
 
-### Algoritmo ACO (Ant Colony Optimization):
-O ACO é baseado no comportamento das formigas para encontrar o caminho mais curto até uma fonte de comida. As formigas deixam trilhas de feromônio para orientar outras formigas. No Problema da Mochila, cada formiga constrói uma solução (um subconjunto de itens), e a solução é aprimorada ao longo do tempo com base na quantidade de feromônio depositado.
+markdown
+Copy
+Edit
 
-### Cuckoo Search:
-O Cuckoo Search é inspirado no comportamento dos cucos, que colocam seus ovos nos ninhos de outras aves. O algoritmo envolve a troca de soluções entre um grupo de "ninhos" e a substituição de soluções menos promissoras por novas soluções geradas aleatoriamente.
+---
 
-### PSO (Particle Swarm Optimization):
-O PSO é baseado no comportamento coletivo de partículas que buscam encontrar o melhor caminho em um espaço de solução. Cada partícula ajusta sua posição e velocidade com base nas experiências passadas de si mesma e de suas vizinhas, buscando encontrar a melhor solução.
+## Implementação dos Algoritmos
 
-### Algoritmo Genético:
-O Algoritmo Genético é inspirado na seleção natural e nos processos de evolução. Ele utiliza operadores como seleção, cruzamento e mutação para evoluir uma população de soluções até encontrar a melhor solução possível para o Problema da Mochila.
+Cada arquivo `.py` dentro da pasta `bio/` contém uma implementação completa do respectivo algoritmo, com as seguintes características:
 
-## 3. Resultados
-A tabela abaixo mostra os tempos de execução de cada algoritmo para diferentes instâncias do Problema da Mochila, com base em diferentes valores de n_itens:
+- **Entrada:** listas de pesos, valores dos itens e capacidade da mochila.
+- **Saída:** melhor solução encontrada (lista binária), valor total e peso total da mochila.
+- **Função principal:** `main()` ou função similar que executa o algoritmo em instâncias de teste e retorna resultados em um formato padronizado (`pandas.DataFrame` ou lista de dicionários).
 
-| Algoritmo        | n_itens | Bee Algorithm | Algoritmo ACO | Cuckoo Search | PSO       | Algoritmo Genético |
-|------------------|---------|---------------|---------------|---------------|-----------|--------------------|
-| **Instância 1**  | 5       | 0.00800       | 0.00457       | 0.00300       | 0.019850  | 0.00000            |
-| **Instância 2**  | 1000    | 0.85355       | 0.95148       | 0.30831       | 2.913163  | 0.01201            |
-| **Instância 3**  | 10000   | 8.23219       | 10.12230      | 3.09650       | 30.499538 | 0.11217            |
+### Algoritmos Implementados
 
-Complexidade Assintótica (Big O)
+- `algBeeAlgorithm.py` — Bee Algorithm, inspirado no comportamento das abelhas na busca por soluções.
+- `algGeneticos.py` — Algoritmo Genético, baseado em seleção, cruzamento e mutação.
+- `algEnxParticulas.py` — Particle Swarm Optimization, simula o comportamento coletivo de enxames.
+- `algCuckoo.py` — Cuckoo Search, inspirado no comportamento de reprodução de algumas espécies de cucos.
+- `algColonFormigas.py` — Ant Colony Optimization, inspirado no caminho deixado por formigas para encontrar comida.
 
-Algoritmo Genético (GA)
+---
 
-Complexidade: O(n * P * G), onde:
+## Arquivo main.py
 
-n é o número de itens (tamanho do espaço de solução).
+O `main.py` importa todos os algoritmos, executa suas funções principais e coleta os resultados em `pandas.DataFrame`.  
+Após a execução, os resultados são concatenados, organizados e exibidos em formato tabular, comparando o tempo de execução dos algoritmos em diferentes tamanhos de problema.
 
-P é o número de indivíduos na população (tamanho da população).
+### Como executar:
 
-G é o número de gerações (quantas vezes o algoritmo executa iterações).
+```bash
+python main.py
+O output esperado é um DataFrame pandas contendo:
 
-Explicação: A complexidade é dominada pelo número de gerações e pelo tamanho da população. A cada geração, a população inteira é avaliada, o que torna o GA mais custoso em termos de tempo de execução, principalmente para grandes n.
+Número de itens (n_itens)
 
-Algoritmo ACO (Ant Colony Optimization)
-Complexidade: O(n * M * I), onde:
+Tempo de execução de cada algoritmo (Bee Algorithm, Algoritmo Genético, PSO, etc.)
 
-n é o número de itens.
+Testes Unitários
+Cada algoritmo possui um conjunto de testes unitários implementados na pasta tests/. Eles garantem que:
 
-M é o número de formigas.
+O algoritmo retorna soluções dentro da capacidade da mochila.
 
-I é o número de iterações.
+As soluções possuem valor coerente.
 
-Explicação: O ACO avalia múltiplas soluções para cada formiga em cada iteração, o que significa que o tempo de execução depende linearmente do número de formigas e iterações.
+O código está livre de erros básicos e mantém a lógica correta.
 
-Cuckoo Search
-Complexidade: O(n * N * I), onde:
+Como executar os testes:
+Se você usa pytest, execute:
 
-n é o número de itens.
+bash
+Copy
+Edit
+pytest tests/
+Dificuldades e Aprendizados
+Integração entre módulos: Foi necessário padronizar os retornos e a estrutura dos dados para permitir concatenação e análise conjunta.
 
-N é o número de ninhos.
+Importação e estrutura do projeto: Ajustar caminhos e pacotes para evitar erros de importação foi essencial para a execução fluida do projeto.
 
-I é o número de iterações.
+Padronização dos nomes dos algoritmos: Para pivotar os dados e comparar, foi necessário garantir que os nomes fossem idênticos em todos os módulos.
 
-Explicação: O Cuckoo Search tem uma estrutura relativamente simples. A atualização dos ninhos e a busca de soluções através de voo de Lévy são diretas, mas o número de iterações pode impactar o desempenho.
+Gerenciamento de instâncias: Criação de funções para gerar instâncias aleatórias de forma consistente, mantendo variabilidade de testes.
 
-PSO (Particle Swarm Optimization)
-Complexidade: O(n * P * I), onde:
+Documentação e legibilidade: Refatorar para deixar o código mais limpo, legível e modular.
 
-n é o número de itens.
+Teste em larga escala: Rodar algoritmos com instâncias muito grandes para verificar desempenho e estabilidade.
 
-P é o número de partículas.
+Tecnologias e Bibliotecas Utilizadas
+Python 3.13+
 
-I é o número de iterações.
+Pandas: para manipulação e análise de dados.
 
-Explicação: Similar ao ACO, PSO também é dependente do número de partículas e iterações. Cada partícula atualiza sua posição e velocidade a cada iteração, tornando o algoritmo relativamente custoso em termos de tempo de execução.
+pytest: framework para testes unitários.
 
-Bee Algorithm
-Complexidade: O(n * P * I), onde:
+Bibliotecas padrão: random, time, typing.
 
-n é o número de itens.
+Contato
+Alexandre Tessaro 
 
-P é o número de abelhas.
+Qualquer dúvida ou sugestão, fico à disposição!
 
-I é o número de iterações.
-
-Explicação: O Bee Algorithm, apesar de eficiente para pequenas instâncias, também depende do número de abelhas e iterações. A atualização das posições das abelhas e a busca local para vizinhos tornam sua complexidade relativamente baixa.
-
-### Observações:
-Para instâncias menores (5 itens), o tempo de execução é muito rápido, com todos os algoritmos apresentando resultados em milissegundos.
-
-Para instâncias maiores (1000 e 10000 itens), o desempenho de cada algoritmo varia significativamente. O Algoritmo Genético apresentou o melhor desempenho para n_itens = 5, mas à medida que o número de itens cresce, outros algoritmos como Bee Algorithm e Cuckoo Search mostraram melhor desempenho.
-
-PSO foi o algoritmo com o tempo de execução mais longo nas instâncias maiores.
-
-## 4. Exemplos de Entrada e Saída
-Exemplo de Entrada:
-Para a instância com 5 itens, temos os seguintes dados:
-
-Pesos: [2, 3, 4, 5, 1]
-
-Valores: [3, 4, 5, 6, 2]
-
-Capacidade da mochila: 5
-
-Exemplo de Saída:
-A solução pode consistir em selecionar os itens 1, 3 e 5, resultando no seguinte:
-
-Itens selecionados: [1, 0, 1, 0, 1]
-
-Valor total: 3 + 5 + 2 = 10
-
-Peso total: 2 + 4 + 1 = 7 (não ultrapassando a capacidade da mochila)
-
-## 5. Dificuldades e Aprendizados
-
-### Dificuldades:
-
-#### Complexidade Computacional: 
-
-À medida que o número de itens aumenta, a complexidade computacional dos algoritmos cresce significativamente, especialmente para o PSO e o Algoritmo Genético, que envolvem muitos cálculos e ajustes de parâmetros.
-
-#### Parâmetros dos Algoritmos: 
-Encontrar os valores ideais para os parâmetros de cada algoritmo (como taxas de mutação, coeficientes no PSO, etc.) foi um desafio. Ajustes inadequados podem levar a soluções subótimas ou tempos de execução muito elevados.
-
-### Aprendizados:
-
-#### Importância dos Parâmetros: 
-O ajuste de parâmetros (como taxas de mutação no Algoritmo Genético ou coeficientes no PSO) teve um grande impacto no desempenho de cada algoritmo. A calibração precisa é essencial para garantir bons resultados.
-
-#### Uso de Algoritmos Bio-Inspirados: 
-Observamos que os algoritmos bio-inspirados podem ser muito eficientes para resolver problemas de otimização, mas a escolha do algoritmo depende muito do tamanho da instância do problema.
-
-#### Experimentação e Ajustes: 
-O processo de experimentação e ajustes finos foi fundamental para alcançar os melhores resultados, e o uso de diferentes algoritmos ajudou a comparar os pontos fortes e fracos de cada abordagem.
-
-## 6. Conclusão
-Este estudo comparou o desempenho de diferentes algoritmos bio-inspirados na solução do Problema da Mochila. Observamos que, enquanto algoritmos como o Bee Algorithm e o Cuckoo Search apresentaram melhor desempenho em instâncias maiores, o PSO e o Algoritmo Genético foram mais eficientes para instâncias menores.
-
-Os resultados destacam a importância de escolher o algoritmo certo com base no tamanho e na natureza do problema, e o impacto que parâmetros mal ajustados podem ter na eficiência dos algoritmos. A experimentação foi essencial para encontrar a solução ótima.
-
+---
