@@ -109,10 +109,11 @@ Os testes validam:
 
 ## 👨‍💼 Equipe
 
-* Nome 1
-* Nome 2
-* Nome 3
-* Nome 4
+* Alexandre Tessaro Vieira
+* Edson Borges Polucena
+* Leonardo Pereira Borges
+* Richard Schmitz Riedo
+* Wuelliton Christian Dos Santos
 
 ---
 
