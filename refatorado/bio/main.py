@@ -5,6 +5,7 @@ import algCuckoo
 import algEnxParticulas
 import algGeneticos
 
+# Dicionário dos módulos dos algoritmos
 algoritmos = {
     "Bee Algorithm": algBeeAlgorithm,
     "Algoritmo ACO": algColonFormigas,
@@ -13,32 +14,60 @@ algoritmos = {
     "Algoritmo Genético": algGeneticos,
 }
 
+# Mapeamento das funções de teste para cada algoritmo
+funcoes_teste = {
+    "Bee Algorithm": "executar_testes_bee",
+    "Algoritmo ACO": "executar_testes_aco",
+    "Cuckoo Search": "executar_testes_cuckoo",
+    "PSO": "executar_testes_algEnxParticulas",
+    "Algoritmo Genético": "executar_testes_genetico",
+}
+
 resultados = []
+
 for nome, modulo in algoritmos.items():
-    # Ajuste para chamar a função correta que retorna a lista de resultados
-    if hasattr(modulo, 'executar_testes_bee'):
-        df = pd.DataFrame(modulo.executar_testes_bee())
-    elif hasattr(modulo, 'executar_testes_aco'):
-        df = pd.DataFrame(modulo.executar_testes_aco())
-    elif hasattr(modulo, 'executar_testes_cuckoo'):
-        df = pd.DataFrame(modulo.executar_testes_cuckoo())
-    elif hasattr(modulo, 'executar_testes_pso'):
-        df = pd.DataFrame(modulo.executar_testes_pso())
-    elif hasattr(modulo, 'executar_testes_geneticos'):
-        df = pd.DataFrame(modulo.executar_testes_geneticos())
-    else:
-        # Caso não ache função padrão, pode pular ou lançar erro
+    print(f"Executando testes para: {nome}")
+    
+    func_nome = funcoes_teste.get(nome)
+    
+    if not func_nome:
+        print(f"Nenhuma função de teste mapeada para {nome}")
         continue
     
-    resultados.append(df)
+    if not hasattr(modulo, func_nome):
+        print(f"Função '{func_nome}' não encontrada no módulo do {nome}")
+        continue
+    
+    try:
+        func = getattr(modulo, func_nome)
+        df = pd.DataFrame(func())
+        df['algoritmo'] = nome
+        resultados.append(df)
+    except Exception as e:
+        print(f"Erro ao executar {nome}: {e}")
 
-df_tempos = pd.concat(resultados, axis=0)
+# Concatenar resultados em um único DataFrame
+if resultados:
+    df_tempos = pd.concat(resultados, axis=0)
 
-df_tempos = df_tempos[['n_itens', 'tempo_execucao', 'algoritmo']].copy()
+    # Selecionar colunas importantes (garantindo que existam)
+    colunas_esperadas = ['n_itens', 'tempo_execucao', 'algoritmo']
+    colunas_validas = [col for col in colunas_esperadas if col in df_tempos.columns]
+    df_tempos = df_tempos[colunas_validas].copy()
 
-df_tempos_pivot = df_tempos.pivot(index='n_itens', columns='algoritmo', values='tempo_execucao').reset_index()
+    # Pivotar para formato de comparação lado a lado
+    df_tempos_pivot = df_tempos.pivot(index='n_itens', columns='algoritmo', values='tempo_execucao').reset_index()
 
-ordem_colunas = ['n_itens'] + list(algoritmos.keys())
-df_tempos_pivot = df_tempos_pivot[ordem_colunas]
+    # Garantir ordem das colunas no resultado
+    ordem_colunas = ['n_itens'] + list(algoritmos.keys())
+    colunas_finais = [col for col in ordem_colunas if col in df_tempos_pivot.columns]
+    df_tempos_pivot = df_tempos_pivot[colunas_finais]
 
-print(df_tempos_pivot)
+    print("\n=== Tabela de Tempos de Execução dos Algoritmos ===")
+    print(df_tempos_pivot)
+
+    # Opcional: salvar resultado para análise futura
+    df_tempos_pivot.to_csv("tempos_algoritmos.csv", index=False)
+    print("\nArquivo 'tempos_algoritmos.csv' salvo com os resultados.")
+else:
+    print("Nenhum resultado válido foi obtido.")

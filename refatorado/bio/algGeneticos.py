@@ -84,6 +84,10 @@ def main():
     df = pd.DataFrame(testes)
     return df
 
+def executar_testes_genetico():
+    return main().to_dict(orient="records")
+
 if __name__ == "__main__":
     df_resultados = main()
     print(df_resultados)
+

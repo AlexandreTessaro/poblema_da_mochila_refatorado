@@ -1,6 +1,5 @@
 import pytest
-from bio.bee import bee_algorithm, avaliar_solucao
-
+from refatorado.bio.algBeeAlgorithm import bee_algorithm, avaliar_solucao
 
 @pytest.fixture
 def instancia_simples():

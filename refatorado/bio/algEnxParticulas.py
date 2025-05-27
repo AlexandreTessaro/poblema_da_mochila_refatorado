@@ -111,6 +111,9 @@ def main():
     df_resultados = pd.DataFrame(resultados)
     return df_resultados
 
+def executar_testes_algEnxParticulas():
+    return main().to_dict(orient="records")
+
 if __name__ == "__main__":
     df_resultados = main()
     print("\nResumo dos resultados de todos os testes:")

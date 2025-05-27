@@ -1,5 +1,5 @@
 import unittest
-from bio.aco_algorithm import (
+from refatorado.bio.algColonFormigas import (
     gerar_instancia_aleatoria,
     avaliar_solucao,
     construir_solucao,

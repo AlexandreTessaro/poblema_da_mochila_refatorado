@@ -1,5 +1,5 @@
 import unittest
-import algGeneticos  # Supondo que seu arquivo refatorado esteja salvo como algGeneticos.py
+from refatorado.bio import algGeneticos
 
 class TestAlgoritmoGenetico(unittest.TestCase):
     def setUp(self):

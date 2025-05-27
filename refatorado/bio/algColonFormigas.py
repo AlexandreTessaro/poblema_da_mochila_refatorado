@@ -134,6 +134,9 @@ def rodar_experimentos() -> pd.DataFrame:
 
     return pd.DataFrame(testes)
 
+def executar_testes_aco():
+    return rodar_experimentos().to_dict(orient='records')
+
 
 if __name__ == "__main__":
     df_resultados = rodar_experimentos()

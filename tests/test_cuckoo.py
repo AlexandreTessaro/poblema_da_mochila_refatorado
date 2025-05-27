@@ -1,5 +1,5 @@
 import unittest
-from algCuckoo import (
+from refatorado.bio.algCuckoo import (
     cuckoo_search,
     gerar_instancia_aleatoria,
     avaliar_solucao,

@@ -1,5 +1,5 @@
 import unittest
-from algEnxParticulas import gerar_instancia_aleatoria, avaliar, Particula, pso, sigmoid
+from refatorado.bio.algEnxParticulas import gerar_instancia_aleatoria, avaliar, Particula, pso, sigmoid
 
 class TestPSOAlgorithm(unittest.TestCase):
 

@@ -90,6 +90,9 @@ def main() -> pd.DataFrame:
 
     return pd.DataFrame(resultados)
 
+def executar_testes_cuckoo():
+    return main().to_dict(orient="records")
+
 
 if __name__ == "__main__":
     df_resultado = main()
