@@ -1,112 +1,121 @@
-# Refatoração do Problema da Mochila com Algoritmos Bio-inspirados
+# 🎒 Problema da Mochila 0/1 com Algoritmos Bio-inspirados — Refatoração
 
-## Descrição do Projeto
-
-Este projeto consiste na implementação e refatoração de diversas soluções bio-inspiradas para o Problema da Mochila 0/1, utilizando algoritmos como Bee Algorithm, Algoritmo Genético, Particle Swarm Optimization (PSO), Cuckoo Search e Ant Colony Optimization (ACO).  
-O objetivo é fornecer uma estrutura modular, clara e reutilizável que permita executar, comparar e analisar o desempenho de cada algoritmo sobre diferentes instâncias do problema.
+Este repositório contém a **refatoração do código** do Problema da Mochila 0/1 utilizando **algoritmos bio-inspirados**, realizada conforme as exigências da atividade prática da disciplina.
 
 ---
 
-## Estrutura do Projeto
+## 📁 Estrutura do Repositório
 
-poblema_da_mochila_refatorado/
-│
+```
+.
+├── original/               # Código original (não modificado)
 ├── refatorado/
-│ ├── bio/
-│ │ ├── algBeeAlgorithm.py # Implementação do Bee Algorithm
-│ │ ├── algGeneticos.py # Implementação do Algoritmo Genético
-│ │ ├── algEnxParticulas.py # Implementação do PSO
-│ │ ├── algCuckoo.py # Implementação do Cuckoo Search
-│ │ ├── algColonFormigas.py # Implementação do ACO
-│ │ ├── main.py # Script principal para executar e comparar os algoritmos
-│ │ └── tests/ # Testes unitários para cada algoritmo
-│ │ ├── test_algGeneticos.py
-│ │ ├── test_bee.py
-│ │ ├── test_cuckoo.py
-│ │ └── test_pso.py
-│
-└── README.md # Este arquivo
-
-markdown
-Copy
-Edit
+│   ├── bio/                # Implementações refatoradas dos algoritmos
+│   ├── tests/              # Testes automatizados com pytest
+│   ├── main.py             # Script principal para execução e comparação
+│   ├── requirements.txt    # Bibliotecas utilizadas
+│   ├── refatoracao.md      # Documento explicando todas as melhorias
+│   ├── processo.md         # Estratégia de trabalho da equipe
+├── README.md               # Este arquivo
+└── slides_apresentacao.pptx# Slides usados na apresentação
+```
 
 ---
 
-## Implementação dos Algoritmos
+## 🧬 Algoritmos Bio-inspirados Refatorados
 
-Cada arquivo `.py` dentro da pasta `bio/` contém uma implementação completa do respectivo algoritmo, com as seguintes características:
+| Algoritmo               | Descrição                                                  |
+| ----------------------- | ---------------------------------------------------------- |
+| Bee Algorithm 🐝        | Inspiração em comportamento de abelhas na coleta de néctar |
+| Algoritmo Genético 🧬   | Seleção natural, cruzamento e mutação de soluções          |
+| Cuckoo Search 🥚        | Baseado no parasitismo de ninhos das aves cuco             |
+| PSO (Particle Swarm) 🐦 | Modela o comportamento coletivo de bandos de pássaros      |
+| ACO (Ant Colony) 🐜     | Simula o comportamento de formigas em busca de comida      |
 
-- **Entrada:** listas de pesos, valores dos itens e capacidade da mochila.
-- **Saída:** melhor solução encontrada (lista binária), valor total e peso total da mochila.
-- **Função principal:** `main()` ou função similar que executa o algoritmo em instâncias de teste e retorna resultados em um formato padronizado (`pandas.DataFrame` ou lista de dicionários).
-
-### Algoritmos Implementados
-
-- `algBeeAlgorithm.py` — Bee Algorithm, inspirado no comportamento das abelhas na busca por soluções.
-- `algGeneticos.py` — Algoritmo Genético, baseado em seleção, cruzamento e mutação.
-- `algEnxParticulas.py` — Particle Swarm Optimization, simula o comportamento coletivo de enxames.
-- `algCuckoo.py` — Cuckoo Search, inspirado no comportamento de reprodução de algumas espécies de cucos.
-- `algColonFormigas.py` — Ant Colony Optimization, inspirado no caminho deixado por formigas para encontrar comida.
+Cada algoritmo foi modularizado com responsabilidade única e testes independentes.
 
 ---
 
-## Arquivo main.py
+## ▶️ Como Executar
 
-O `main.py` importa todos os algoritmos, executa suas funções principais e coleta os resultados em `pandas.DataFrame`.  
-Após a execução, os resultados são concatenados, organizados e exibidos em formato tabular, comparando o tempo de execução dos algoritmos em diferentes tamanhos de problema.
+1. **Clone o repositório**:
 
-### Como executar:
+```bash
+git clone https://github.com/sua-equipe/problema-mochila-refatorado.git
+cd problema-mochila-refatorado/refatorado
+```
+
+2. **Instale as dependências**:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. **Execute a comparação entre algoritmos**:
 
 ```bash
 python main.py
-O output esperado é um DataFrame pandas contendo:
+```
 
-Número de itens (n_itens)
-
-Tempo de execução de cada algoritmo (Bee Algorithm, Algoritmo Genético, PSO, etc.)
-
-Testes Unitários
-Cada algoritmo possui um conjunto de testes unitários implementados na pasta tests/. Eles garantem que:
-
-O algoritmo retorna soluções dentro da capacidade da mochila.
-
-As soluções possuem valor coerente.
-
-O código está livre de erros básicos e mantém a lógica correta.
-
-Como executar os testes:
-Se você usa pytest, execute:
-
-bash
-Copy
-Edit
-pytest tests/
-Dificuldades e Aprendizados
-Integração entre módulos: Foi necessário padronizar os retornos e a estrutura dos dados para permitir concatenação e análise conjunta.
-
-Importação e estrutura do projeto: Ajustar caminhos e pacotes para evitar erros de importação foi essencial para a execução fluida do projeto.
-
-Padronização dos nomes dos algoritmos: Para pivotar os dados e comparar, foi necessário garantir que os nomes fossem idênticos em todos os módulos.
-
-Gerenciamento de instâncias: Criação de funções para gerar instâncias aleatórias de forma consistente, mantendo variabilidade de testes.
-
-Documentação e legibilidade: Refatorar para deixar o código mais limpo, legível e modular.
-
-Teste em larga escala: Rodar algoritmos com instâncias muito grandes para verificar desempenho e estabilidade.
-
-Tecnologias e Bibliotecas Utilizadas
-Python 3.13+
-
-Pandas: para manipulação e análise de dados.
-
-pytest: framework para testes unitários.
-
-Bibliotecas padrão: random, time, typing.
-
-Contato
-Alexandre Tessaro 
-
-Qualquer dúvida ou sugestão, fico à disposição!
+A saída será uma tabela com tempo de execução, valor total e peso total de cada algoritmo para diferentes tamanhos de instâncias.
 
 ---
+
+## 🦪 Como Rodar os Testes
+
+Dentro da pasta `refatorado/`, execute:
+
+```bash
+pytest tests/
+```
+
+Os testes validam:
+
+* Correção da avaliação de soluções.
+* Limite de capacidade respeitado.
+* Execução dos algoritmos sem erro.
+* Tipagem e retorno esperado das funções.
+
+---
+
+## 📊 Resultados da Refatoração
+
+* **Código modularizado**, com responsabilidades únicas e separadas por algoritmo.
+* **Nomeação adequada** para variáveis e funções, refletindo suas responsabilidades.
+* **Remoção de código duplicado** entre algoritmos.
+* **Criação de testes automatizados** com `pytest`.
+* **Documentação clara** do processo (`refatoracao.md` e `processo.md`).
+* **Análise de qualidade** realizada com `flake8`.
+
+---
+
+## 🧠 Aprendizados
+
+* A importância da legibilidade e coesão no código.
+* Como aplicar padrões de refatoração reais (extraídos de Martin Fowler, Refactoring Guru).
+* O valor da automação de testes para garantir integridade do sistema.
+* Como trabalhar em equipe com versionamento, documentação e divisão de responsabilidades.
+
+---
+
+## 📚 Referências
+
+* *Refatoração: Aperfeiçoando o Design de Códigos Existentes* — Martin Fowler
+* [Refactoring Guru](https://refactoring.guru/)
+* [Refactoring Catalog](https://refactoring.com/catalog/)
+* Algoritmos Bioinspirados: Natureza como Computação
+
+---
+
+## 👨‍💼 Equipe
+
+* Nome 1
+* Nome 2
+* Nome 3
+* Nome 4
+
+---
+
+## 📾 Licença
+
+Projeto acadêmico, sem fins lucrativos, desenvolvido com fins didáticos.
