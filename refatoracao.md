@@ -53,24 +53,24 @@ algoritmo\_original.py
 
 refatorado/
 │
-├── bio/
-│   ├── algBeeAlgorithm.py
-│   ├── algColonFormigas.py
-│   ├── algCuckoo.py
-│   ├── algEnxParticulas.py
-│   ├── algGeneticos.py
-│   ├── main.py ← Executa e compara os algoritmos
-│   └── **init**.py
+| bio/
+│   | algBeeAlgorithm.py
+│   | algColonFormigas.py
+│   | algCuckoo.py
+│   | algEnxParticulas.py
+│   | algGeneticos.py
+│   | main.py ← Executa e compara os algoritmos
+│   | **init**.py
 │
-├── tests/
-│   └── test\_algoritmos.py ← Testes unitários com pytest
+|  tests/
+│    | test\_algoritmos.py ← Testes unitários com pytest
 │
-├── original/ ← Código original da outra equipe
+|   original/ ← Código original da outra equipe
 │
-├── refatoracao.md
-├── processo.md
-├── README.md
-└── slides\_apresentacao.pdf
+|   refatoracao.md
+|   processo.md
+|   README.md
+|   slides\_apresentacao.pdf
 
 ---
 
