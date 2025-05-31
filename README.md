@@ -8,35 +8,45 @@ Este repositório contém a **refatoração do código** do Problema da Mochila 
 
 ```
 .
-├── original/               # Código original (não modificado)
-├── refatorado/
-│   ├── bio/                # Implementações refatoradas dos algoritmos
-│   ├── tests/              # Testes automatizados com pytest
-│   ├── main.py             # Script principal para execução e comparação
-│   ├── requirements.txt    # Bibliotecas utilizadas
-│   ├── refatoracao.md      # Documento explicando todas as melhorias
-│   ├── processo.md         # Estratégia de trabalho da equipe
-├── README.md               # Este arquivo
-└── slides_apresentacao.pptx# Slides usados na apresentação
-```
+├── algoritmos/             # Algoritmos de otimização implementados
+│   ├── algBeeAlgorithm.py
+│   ├── algColonFormigas.py
+│   ├── algCuckoo.py
+│   ├── algEnxParticulas.py
+│   └── algGeneticos.py
+│
+├── tests/                  # Testes automatizados com pytest
+│   ├── test_algBeeAlgorithm.py
+│   ├── test_algColonFormigas.py
+│   ├── test_algCuckoo.py
+│   ├── test_algEnxParticulas.py
+│   └── test_algGeneticos.py
+│
+├── utils/                  # Funções auxiliares reutilizáveis
+│   ├── __init__.py
+│   ├── avaliacao.py
+│   └── geracao.py
+│
+└── main.py                 # Script principal para execução dos algoritmos
+
 
 ---
 
-## 🧬 Algoritmos Bio-inspirados Refatorados
+##  Algoritmos Bio-inspirados Refatorados
 
 | Algoritmo               | Descrição                                                  |
 | ----------------------- | ---------------------------------------------------------- |
-| Bee Algorithm 🐝        | Inspiração em comportamento de abelhas na coleta de néctar |
-| Algoritmo Genético 🧬   | Seleção natural, cruzamento e mutação de soluções          |
-| Cuckoo Search 🥚        | Baseado no parasitismo de ninhos das aves cuco             |
-| PSO (Particle Swarm) 🐦 | Modela o comportamento coletivo de bandos de pássaros      |
-| ACO (Ant Colony) 🐜     | Simula o comportamento de formigas em busca de comida      |
+| Bee Algorithm           | Inspiração em comportamento de abelhas na coleta de néctar |
+| Algoritmo Genético      | Seleção natural, cruzamento e mutação de soluções          |
+| Cuckoo Search           | Baseado no parasitismo de ninhos das aves cuco             |
+| PSO (Particle Swarm)    | Modela o comportamento coletivo de bandos de pássaros      |
+| ACO (Ant Colony)        | Simula o comportamento de formigas em busca de comida      |
 
 Cada algoritmo foi modularizado com responsabilidade única e testes independentes.
 
 ---
 
-## ▶️ Como Executar
+## ▶ Como Executar
 
 1. **Clone o repositório**:
 
@@ -61,7 +71,7 @@ A saída será uma tabela com tempo de execução, valor total e peso total de c
 
 ---
 
-## 🦪 Como Rodar os Testes
+## Como Rodar os Testes
 
 Dentro da pasta `refatorado/`, execute:
 
@@ -89,7 +99,7 @@ Os testes validam:
 
 ---
 
-## 🧠 Aprendizados
+##  Aprendizados
 
 * A importância da legibilidade e coesão no código.
 * Como aplicar padrões de refatoração reais (extraídos de Martin Fowler, Refactoring Guru).
@@ -98,7 +108,7 @@ Os testes validam:
 
 ---
 
-## 📚 Referências
+## Referências
 
 * *Refatoração: Aperfeiçoando o Design de Códigos Existentes* — Martin Fowler
 * [Refactoring Guru](https://refactoring.guru/)
@@ -107,7 +117,7 @@ Os testes validam:
 
 ---
 
-## 👨‍💼 Equipe
+##  Equipe
 
 * Alexandre Tessaro Vieira
 * Edson Borges Polucena
@@ -117,6 +127,6 @@ Os testes validam:
 
 ---
 
-## 📾 Licença
+##  Licença
 
 Projeto acadêmico, sem fins lucrativos, desenvolvido com fins didáticos.
