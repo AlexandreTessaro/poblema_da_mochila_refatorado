@@ -28,10 +28,8 @@ Este repositório contém a **refatoração do código** do Problema da Mochila 
 │   └── geracao.py
 │
 └── main.py                 # Script principal para execução dos algoritmos
-
-
----
-
+.
+```
 ##  Algoritmos Bio-inspirados Refatorados
 
 | Algoritmo               | Descrição                                                  |
@@ -44,7 +42,7 @@ Este repositório contém a **refatoração do código** do Problema da Mochila 
 
 Cada algoritmo foi modularizado com responsabilidade única e testes independentes.
 
----
+
 
 ## ▶ Como Executar
 
